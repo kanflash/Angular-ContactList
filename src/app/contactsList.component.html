@@ -1,0 +1,8 @@
+<div>
+    <p *ngIf="!showContacts">There are no contacts yet in your collection.</p>
+    <ul *ngIf="showContacts" class="list-group list-controls" id="contact-list">
+        <contact-card [contacts]="contacts"></contact-card>
+    </ul>
+</div>
+
+

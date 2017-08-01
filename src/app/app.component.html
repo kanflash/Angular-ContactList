@@ -1,0 +1,28 @@
+ <div class="global-wrapper ng-scope">
+  <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner"> 
+    <nav class="navbar navbar-default navbar-fixed-top"> 
+        <div class="container">
+          <div class="nav-header">
+            <div class="navbar-brand hidden-xs">My Contacts</div>
+          </div>
+          <nav class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a routerLink="/contacts" routerLinkActive="active">Home</a>
+            </li>
+          </ul>
+          </nav>
+        </div> 
+    </nav>
+  </header>
+  
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div> 
+  
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted">MongoDB + Express + Angular4 + Node.js (MEAN)</p>
+    </div>
+  </footer>
+</div>

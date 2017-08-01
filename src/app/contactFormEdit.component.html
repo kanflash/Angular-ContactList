@@ -1,0 +1,150 @@
+<div class="row">
+    <form role="form" name="form" class='ui form' >
+    <div class="container-fluid list-group-item">
+        <div class="col-sm-8">
+
+            <h3 *ngIf="contact._id === '' ">Add new contact</h3>
+            
+            <h3 *ngIf="contact._id !== '' ">Edit contact</h3>
+
+            <div class="ui negative message"><p></p></div>
+
+            <div class='form-group'>
+                <label class="control-label" htmlFor="form-fname">First Name</label>
+                <input
+                    id="form-fname"
+                    name="fname"
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter First Name"
+                    [(ngModel)]="contact.fname"
+                    (input)="handleChange($event)"
+                    required
+                />
+                <span>{{errors.fname}}</span>
+            </div>
+            
+            <div class='form-group'>
+                <label class="control-label" htmlFor="form-lname">Last Name</label>
+                <input
+                    id="form-lname"
+                    name="lname"
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter Last Name"
+                    [(ngModel)]="contact.lname"
+                    (input)="handleChange($event)"
+                    required
+                />
+                <span>{{errors.lname}}</span>
+            </div>
+            
+            <div class='form-group'>
+                <label class="control-label" htmlFor="form-dt">Birth Day</label>
+                <input 
+                    id="form-dt"
+                    name="dt"
+                    class="form-control"
+                    type="date"
+                    placeholder="MM/DD/YYYY"
+                    [(ngModel)]="contact.dt"
+                    (input)="handleChange($event)"
+                    required
+                />
+                <span>{{errors.dt}}</span>
+            </div>
+            
+            <div class='form-group'>
+                <label class="control-label" htmlFor="form-company">Company</label>
+                <input
+                    id="form-company"
+                    name="company"
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter Company"
+                    [(ngModel)]="contact.company"
+                    (input)="handleChange($event)"
+                    required
+                />
+                <span>{{errors.company}}</span>
+            </div>
+            
+            <div class='form-group'>
+                <label class="control-label" htmlFor="form-email">E-Mail Address</label>
+                <input
+                    id="form-email"
+                    name="email"
+                    class="form-control"
+                    type="email"
+                    placeholder="example@domain.com"
+                    [(ngModel)]="contact.email"
+                    (input)="handleChange($event)"
+                    minLength="3"
+                    required
+                />
+                <span>{{errors.email}}</span>
+            </div>
+            
+            <div class='form-group'>
+                <label class="control-label" htmlFor="form-phone">Phone</label>
+                <input
+                    id="form-phone"
+                    name="phone"
+                    class="form-control"
+                    type="tel"
+                    placeholder="000-000-0000"
+                    [(ngModel)]="contact.phone"
+                    (input)="handleChange($event)"
+                    pattern="\d{3}[\-]\d{3}[\-]\d{4}"
+                    required
+                />
+                <span>{{errors.phone}}</span>
+            </div>
+
+            <div class='form-group'>
+                <label class="control-label" htmlFor="form-cover">Photo</label>
+                <input
+                    id="form-cover"
+                    name="cover"
+                    class="form-control"
+                    type="text"
+                    placeholder="Image URL"
+                    [(ngModel)]="contact.cover"
+                    (input)="handleChange($event)"
+                    required
+                />
+                <span>{{errors.cover}}</span>
+            </div>
+        </div>
+        <div class="col-sm-4 list-group-item" style="" style="word-wrap:break-word">
+            <div class="row text-center">
+                <img src="{{contact.cover}}" class="ui small bordered image" data-src="holder.js/100%x180" alt="100%x180" style="width:100%"  data-holder-rendered="true"/>
+                <br/>
+                {{contact.cover}}
+            </div>
+        </div>
+        <div class="col-sm-12">
+
+        <p *ngIf="!modified"> <em>Nothing to save or reset. Introduce some changes first!</em> </p>
+                
+        <p *ngIf="!!errors.global"> <em>Can't save. Please correct form validation errors!</em> </p>
+        
+        <button *ngIf="contact._id === '' " class='btn btn-success' (click)="handleSubmit($event)">
+        <span class="glyphicon glyphicon-ok"></span>
+        <span> Add</span>
+        </button>
+        
+        <button *ngIf="contact._id !== '' " class='btn btn-success' (click)="handleSubmit($event)">
+        <span class="glyphicon glyphicon-ok"></span>
+        <span> Save Edits</span>
+        </button>
+
+        <a class="btn btn-danger" routerLink="{{!contact._id ? '/contacts' : '/contacts/'+contact._id+'/detail'}}" title="Detail" >
+            <span class="glyphicon glyphicon-remove"></span><span>  Cancel</span>
+        </a>
+
+        </div>
+    </div> 
+    </form>
+</div> 
+

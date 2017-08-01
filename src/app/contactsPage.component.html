@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="container-fluid">
+        <div class="navbar-left">  
+        <div class="nav-header bs-docs-header">
+            <h3>Contact List</h3>
+        </div> 
+        </div>
+        <div class="navbar-right">
+          <button class="btn btn-primary btn-sm" title="New" (click)="gotoNewForm()">
+              <span class="glyphicon glyphicon-plus"></span><span>  New</span>
+          </button>
+        </div>
+      </div>
+      <contacts-list [contacts]="contacts">
+      </contacts-list>
+    </div>
+    <div class="col-md-8">
+      <contact-form-page>
+      </contact-form-page>
+    </div>
+    </div>
+</div>
+

@@ -1,0 +1,25 @@
+<div class="container-fluid list-group-item">
+    <h3 class="text-center">{{contact.fname}} {{contact.lname}}</h3>
+    <div class="col-sm-8">
+    <p>Birth day: {{contact.dt}}</p>
+    <p>Company: {{contact.company}}</p>
+    <p>Email: <a href="{{contact.email}}">{{contact.email}}</a></p>
+    <p>Phone: {{contact.phone}}</p>
+    </div>
+    <div class="col-sm-4 list-group-item" style="word-wrap:break-word"> 
+        <div class="row text-center">
+            <img src={{contact.cover}} class="ui small bordered image" data-src="holder.js/100%x180" alt="100%x180" style="width:100%"  data-holder-rendered="true"/>
+            <br/>
+            <p>{{contact.cover}} </p>
+        </div>
+    </div>
+    <div class="col-sm-12">
+    <a class='btn btn-success' routerLink="/contacts/{{contact._id}}/edit" title="Edit">
+        <span class="glyphicon glyphicon-ok"></span><span> Edit</span>
+    </a>
+    <button class="btn btn-danger" title="Remove" (click)="deleteContact(contact._id)">
+        <span class="glyphicon glyphicon-remove"></span><span>  Remove</span>
+    </button>
+    
+    </div>
+</div>
