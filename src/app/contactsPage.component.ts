@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute }            from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription }   from 'rxjs/Subscription';
+import 'rxjs/add/operator/switchMap';
 
 import { ContactsListComponent }   from './contactsList.component';
 import { ContactFormPageComponent }   from './contactFormPage.component';
@@ -18,7 +19,7 @@ export class ContactsPageComponent implements OnInit, OnDestroy {
 
   contacts: Contact[] = [];
   subscription: Subscription;
-  private sub: Subscription;
+  sub: Subscription;
   data$: Observable<string>;
   
   constructor(private contactService: ContactService,private sharedContactService:SharedContactService, private route: ActivatedRoute, private router: Router) { 
@@ -26,19 +27,23 @@ export class ContactsPageComponent implements OnInit, OnDestroy {
     this.subscription = sharedContactService.sharedContactTriggerAction$.subscribe( data => {
         this.updateContactsList(data);
     });
+      
   }
 
   ngOnInit(): void {
-
     
-
-    /*
-    this.sub = this.route.firstChild.params.subscribe(
+    /*this.sub = this.route.params.subscribe(
         params => {          
           console.log(params.id)
         }
       );*/
-      
+
+    /*
+    this.route.paramMap.subscribe(
+     params => console.log(params.get('id'))
+    );
+    */
+
 
     this.contactService.fetchContacts()
       .then(contacts => {

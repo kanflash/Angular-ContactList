@@ -7,9 +7,9 @@
             
             <h3 *ngIf="contact._id !== '' ">Edit contact</h3>
 
-            <div class="ui negative message"><p></p></div>
+            <div class="ui negative message"><p>{{errors.global}}</p></div>
 
-            <div class='form-group'>
+            <div class='form-group' [ngClass]="{'has-error':errors.fname}">
                 <label class="control-label" htmlFor="form-fname">First Name</label>
                 <input
                     id="form-fname"
@@ -24,7 +24,7 @@
                 <span>{{errors.fname}}</span>
             </div>
             
-            <div class='form-group'>
+            <div class='form-group' [ngClass]="{'has-error':errors.lname}">
                 <label class="control-label" htmlFor="form-lname">Last Name</label>
                 <input
                     id="form-lname"
@@ -39,7 +39,7 @@
                 <span>{{errors.lname}}</span>
             </div>
             
-            <div class='form-group'>
+            <div class='form-group' [ngClass]="{'has-error':errors.dt}">
                 <label class="control-label" htmlFor="form-dt">Birth Day</label>
                 <input 
                     id="form-dt"
@@ -54,7 +54,7 @@
                 <span>{{errors.dt}}</span>
             </div>
             
-            <div class='form-group'>
+            <div class='form-group' [ngClass]="{'has-error':errors.company}">
                 <label class="control-label" htmlFor="form-company">Company</label>
                 <input
                     id="form-company"
@@ -69,7 +69,7 @@
                 <span>{{errors.company}}</span>
             </div>
             
-            <div class='form-group'>
+            <div class='form-group' [ngClass]="{'has-error':errors.email}">
                 <label class="control-label" htmlFor="form-email">E-Mail Address</label>
                 <input
                     id="form-email"
@@ -85,7 +85,7 @@
                 <span>{{errors.email}}</span>
             </div>
             
-            <div class='form-group'>
+            <div class='form-group' [ngClass]="{'has-error':errors.phone}">
                 <label class="control-label" htmlFor="form-phone">Phone</label>
                 <input
                     id="form-phone"
@@ -101,7 +101,7 @@
                 <span>{{errors.phone}}</span>
             </div>
 
-            <div class='form-group'>
+            <div class='form-group' [ngClass]="{'has-error':errors.cover}">
                 <label class="control-label" htmlFor="form-cover">Photo</label>
                 <input
                     id="form-cover"
@@ -118,7 +118,7 @@
         </div>
         <div class="col-sm-4 list-group-item" style="" style="word-wrap:break-word">
             <div class="row text-center">
-                <img src="{{contact.cover}}" class="ui small bordered image" data-src="holder.js/100%x180" alt="100%x180" style="width:100%"  data-holder-rendered="true"/>
+                <img [src]="contact.cover || dummySVG " type="image/svg+xml" class="ui small bordered image" data-src="holder.js/100%x180" alt="100%x180" style="width:100%"  data-holder-rendered="true"/>
                 <br/>
                 {{contact.cover}}
             </div>

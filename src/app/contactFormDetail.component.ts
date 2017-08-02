@@ -30,7 +30,7 @@ export class ContactFormDetailComponent implements OnInit {
   constructor(private sharedContactService: SharedContactService, private contactService: ContactService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    console.log('ContactFormDetailComponent');
+    //console.log('ContactFormDetailComponent');
     /*this.route.paramMap.switchMap((params: ParamMap) => {
       
         console.log("switchMap");

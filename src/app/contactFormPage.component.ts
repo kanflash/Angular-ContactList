@@ -13,28 +13,34 @@ import { ContactService }  from './contact.service';
   templateUrl: './contactFormPage.component.html'
 })
 export class ContactFormPageComponent implements OnInit {
-  private sub: Subscription;
 
-  childRouterStatus:Boolean;
+  childRouterAvailable:Boolean;
 
   constructor(private contactService: ContactService, private route: ActivatedRoute, private router: Router) { 
 
   }
 
   ngOnInit(): void {
-    //this.router.events.subscribe((url:any) => console.log(url));
+
     this.router.events
     .filter(event => event instanceof NavigationEnd)
     .subscribe((event:Event) => {
-      console.log(event['url']);
+      //console.log(event['url']);
       let url = event['url'];
-      this.childRouterStatus = url !== '/contacts';
+      this.childRouterAvailable = url !== '/contacts';
     });
-    /*this.sub = this.route.paramMap.subscribe((params ) => {
-      console.log("AA:"+params.get('id'));
+
+    this.route.firstChild && this.route.firstChild.paramMap.subscribe((params ) => {
+      this.childRouterAvailable = true;
+      console.log("id:"+params.get('id'));
+    });
+
+    //debugger;
+    /*this.route.paramMap.subscribe((params ) => {
+      debugger;
+      console.log("id:");
     });*/
-    /*this.sub = this.route.firstChild.params.subscribe(
-        params => console.log(params.id));*/
+
   }
 
 }

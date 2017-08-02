@@ -7,11 +7,12 @@ import { ContactFormDetailComponent }   from './contactFormDetail.component';
 
 
 const routes: Routes = [
-  { path: 'contacts',  component: ContactsPageComponent, 
+  { path: 'contacts',  component: ContactsPageComponent, pathMatch: 'prefix',
     children: [
-      { path: 'new', component: ContactFormEditComponent },
       { path: ':id/edit', component: ContactFormEditComponent },
-      { path: ':id/detail', component: ContactFormDetailComponent }
+      { path: ':id/detail', component: ContactFormDetailComponent },
+      { path: 'new', component: ContactFormEditComponent }
+      
     ]
   },
   { path: '', redirectTo: '/contacts', pathMatch: 'full' },
