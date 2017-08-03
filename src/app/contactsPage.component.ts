@@ -21,6 +21,8 @@ export class ContactsPageComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   sub: Subscription;
   data$: Observable<string>;
+  contactActionStatusText:String = null;
+  contactActionStatusVisible:Boolean = false;
   
   constructor(private contactService: ContactService,private sharedContactService:SharedContactService, private route: ActivatedRoute, private router: Router) { 
   
@@ -58,6 +60,8 @@ export class ContactsPageComponent implements OnInit, OnDestroy {
     if(data.trig_val === 'add'){
       contacts = [... this.contacts,data.contact];
       this.contacts = contacts;
+      this.contactActionStatusText = 'Contact successfully added.';
+      this.contactActionStatusVisible  = true;
     }
     else if(data.trig_val === 'update'){
       contacts = this.contacts.map(item => {
@@ -65,11 +69,18 @@ export class ContactsPageComponent implements OnInit, OnDestroy {
           return item;
       });
       this.contacts = contacts;
+      this.contactActionStatusText = 'Contact successfully updated.';
+      this.contactActionStatusVisible  = true;
     }
     else if(data.trig_val === 'delete'){
       contacts = this.contacts.filter(item => item._id !== data._id);
       this.contacts = contacts;
+      this.contactActionStatusText = 'Contact successfully removed.';
+      this.contactActionStatusVisible  = true;
     }
+    setTimeout(function() {
+        this.contactActionStatusVisible  = false;
+    }.bind(this), 2500);
   }
 
   gotoNewForm(): void {

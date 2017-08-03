@@ -1,4 +1,10 @@
 <div *ngIf="!childRouterAvailable" class="list-group-item text-center">Please select a contact to view</div>
 <router-outlet></router-outlet>
+<br>
+<div class="alert alert-success text-center"  [@visibilityChanged]="contactActionStatusVisible">
+    <!--[ngClass]="{'hidden':!contactActionStatus}" <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+    {{contactActionStatusText}}
+</div>
+
 
 

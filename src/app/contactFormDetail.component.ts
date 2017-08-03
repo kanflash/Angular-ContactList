@@ -6,10 +6,14 @@ import { Observable } from 'rxjs/Observable';
 import { Contact }  from './contact';
 import { ContactService }  from './contact.service';
 import { SharedContactService } from './sharedContact.service';
+import { fadeInAnimation } from './fade-in-animation';
 
 @Component({
   selector: 'contact-form-detail',
-  templateUrl: './contactFormDetail.component.html'
+  templateUrl: './contactFormDetail.component.html',
+  animations: [
+    fadeInAnimation 
+  ]
 })
 export class ContactFormDetailComponent implements OnInit {
 
